@@ -3,8 +3,7 @@ import TravelPlace from '../TravelPlace/TravelPlace';
 import locationData from '../../fakeData/locationData';
 import './Booking.css';
 import { useHistory } from 'react-router-dom';
-import WhyChoose from '../WhyChoose/WhyChoose';
-import Footer from '../Footer/Footer';
+
 
 const Booking = () => {
     const location = locationData;
@@ -13,12 +12,12 @@ const Booking = () => {
     const [description, setDescription] = useState('fishing port, tourism centre and district headquarters in southeastern Bangladesh. It is famous mostly for its long natural sandy beach, and Khyang monastery it ...');
     let redirectDetail = useHistory();
 
-    const handleChange = (id, title, shortDescription) => {// id , title, description set
+    const handleChange = (id, title, shortDescription) => {
         setLocationId(id);
         setTitle(title);
         setDescription(shortDescription);
     }
-    const btnHandleClick = () => {// when button click redirect to detail page
+    const btnHandleClick = () => {
         redirectDetail.push(`/bookingDetail/${locationId}`);
     }
 
@@ -37,9 +36,8 @@ const Booking = () => {
                 </div>
             </div>
             <div className="">
-                    <WhyChoose/>
             </div>
-            <Footer />
+
         </main>
        
     );

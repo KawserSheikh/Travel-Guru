@@ -10,7 +10,7 @@ const BookingDetail = () => {
     const [location, setLocation] = useState({});
     let history = useHistory();
 
-    useEffect(() => { // Load location details data
+    useEffect(() => {
         const findLocation = locationData.find(item => item.id === parseInt(id));
         setLocation(findLocation);
     }, [id])

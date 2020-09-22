@@ -10,23 +10,19 @@ import { UserContext } from '../Main/Main';
 firebase.initializeApp(firebaseConfig);
 
 const Login = () => {
-    // Login purpose
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const [isLogIn, setIsLogin] = useState(true);
     const [newUser, setNewUser] = useState({ firstName: '', lastName: '', email: '', password: '', confirmPassword: '' });
     const [error, setError] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    // Private route purpose
     let history = useHistory();
     let location = useLocation();
     let { from } = location.state || { from: { pathname: "/" } };
-    // Firebase auth purpose
     const googleProvider = new firebase.auth.GoogleAuthProvider();
     const faceBookProvider = new firebase.auth.FacebookAuthProvider();
-
-    // all function is here...
-    const googleSignIn = () => { // Google sign in
+  
+    const googleSignIn = () => {
         firebase.auth().signInWithPopup(googleProvider).then((result) => {
             setUserData(result);
         }).catch(function (error) {
@@ -34,7 +30,7 @@ const Login = () => {
         });
     }
 
-    const faceBookSignIn = () => { // FaceBook sign in ...
+    const faceBookSignIn = () => {
         firebase.auth().signInWithPopup(faceBookProvider).then(result => {
             setUserData(result);
         }).catch(function (error) {
@@ -76,7 +72,7 @@ const Login = () => {
         e.preventDefault();
     }
 
-    const userInfoUpdate = name => {
+    const userInfoUpdate = name => { 
         const user = firebase.auth().currentUser;
         user.updateProfile({
             displayName: name
